@@ -1,0 +1,19 @@
+{% if login_form %}
+    {% for error in form.errors.itervalues %}
+        {{ error }}
+    {% endfor %}
+{% else %}
+    {% for field in form %}
+        {% if field.errors %}
+              <ul class="errorlist">
+              <li><strong>{{ field.label_tag }}</strong>
+                <ul class="errorlist">
+                {% for error in field.errors %}
+                    <li class="error-message">{{ error|escape }}</li>
+                {% endfor %}
+                </ul>
+              </li>
+            </ul>
+        {% endif %}
+    {% endfor %}
+{% endif %}

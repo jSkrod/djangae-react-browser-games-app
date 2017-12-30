@@ -1,0 +1,4 @@
+queue:
+- name: unpack-game
+  target: unpack-game
+  rate: 5/s

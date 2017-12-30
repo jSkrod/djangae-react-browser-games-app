@@ -1,0 +1,35 @@
+service: game
+runtime: python27
+api_version: 1
+threadsafe: true
+
+automatic_scaling:
+  min_idle_instances: 2
+  max_pending_latency: 1s
+
+handlers:
+- url: /_ah/(mapreduce|queue|warmup).*
+  script: wsgi.application
+  login: admin
+
+- url: /media
+  static_dir: templates/static_files
+
+- url: /api/.*
+  script: wsgi.application
+
+- url: /game/.*
+  script: wsgi.application
+
+- url: /static
+  static_dir: templates/static_files/build/static
+
+- url: /.*
+  script: wsgi.application
+
+skip_files:
+  - manage.py
+
+libraries:
+- name: ssl
+  version: latest

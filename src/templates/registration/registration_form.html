@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    {% include 'navigation.html' with register_tab='True' %}
+{% endblock %}
+
+{% block content %}
+    <div class="mdl-layout__tab-panel is-active" id="register">
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+                <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                    <h4 class="mdl-cell mdl-cell--12-col">Register new account</h4>
+                    <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                        {% include 'forms/errors-list.html' %}
+                        <form action="" method="post" id="registration_form">
+                            {% csrf_token %}
+                            <div class="mdl-grid">
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" id="id_username" maxlength="30" name="username" type="text">
+                                        <label class="mdl-textfield__label" for="id_username">Username...</label>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" id="id_email" name="email" type="email">
+                                        <label class="mdl-textfield__label" for="id_email">Email...</label>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input" id="id_password1" name="password1" type="password">
+                                        <label class="mdl-textfield__label" for="id_password1">Password...</label>
+                                    </div>
+                                </div>
+                                <div class="mdl-cell mdl-cell--12-col">
+                                    <div class="mdl-textfield mdl-js-textfield">
+                                        <input class="mdl-textfield__input"  id="id_password2" name="password2" type="password">
+                                        <label class="mdl-textfield__label" for="id_password2">Password confirmation...</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="mdl-card__actions">
+                    <button  class="mdl-button" onclick="document.getElementById('registration_form').submit()">Submit</button>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /_ah/(mapreduce|queue|warmup).*
+  script: wsgi.application
+  login: admin
+
+- url: /media
+  static_dir: templates/static_files
+
+- url: /api/.*
+  script: wsgi.application
+
+- url: /game/.*
+  script: wsgi.application
+
+- url: /static
+  static_dir: templates/static_files/build/static
+
+- url: /
+  static_files: templates/static_files/build/index.html
+  upload: templates/static_files/build/index.html
+
+- url: /.*
+  static_files: templates/static_files/build/index.html
+  upload: templates/static_files/build/index.html
+
+skip_files:
+  - manage.py
+
+libraries:
+- name: ssl
+  version: latest

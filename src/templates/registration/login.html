@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block navigation %}
+    {% include 'navigation.html' with login_tab='True' %}
+{% endblock %}
+
+{% block content %}
+    <div class="mdl-layout__tab-panel is-active" id="login">
+        <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                <div class="mdl-card__supporting-text">
+                    {% include 'forms/errors-list.html' with login_form='True' %}
+                    <form action="" method="post" id="login_form">
+                        {% csrf_token %}
+                        <div class="mdl-grid">
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" id="id_username" maxlength="254" name="username" type="text">
+                                    <label class="mdl-textfield__label" for="id_username">Username...</label>
+                                </div>
+                            </div>
+                            <div class="mdl-cell mdl-cell--12-col">
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input"  id="id_password" name="password" type="password">
+                                    <label class="mdl-textfield__label" for="id_password">Password...</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="mdl-card__actions">
+                    <button  class="mdl-button" onclick="document.getElementById('login_form').submit()">Login</button>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

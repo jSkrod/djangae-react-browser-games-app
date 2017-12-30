@@ -1,0 +1,9 @@
+dispatch:
+  - url: "*-game.pietrzak.net.pl/*"
+    service: game
+
+  - url: "unpack-game.djangae-template-project.appspot.com/*"
+    service: unpack-game
+
+  - url: "*-game.djangae-template-project.appspot.com/*"
+    service: game
